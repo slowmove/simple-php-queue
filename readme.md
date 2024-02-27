@@ -10,6 +10,8 @@ Currently implemented
 
 ## Usage examples
 
+Examples available to run [here](./examples/)
+
 ### Producer
 
 ```php
