@@ -9,12 +9,9 @@ class StorageFactory
 {
   public static function getStorage(StorageType $type, string $storagePath = "")
   {
-    if ($type == StorageType::FILE) {
-      return new FileStorage($storagePath);
-    }
-
-    if ($type == StorageType::SQLITE) {
-      return new SqliteStorage($storagePath);
-    }
+    return match ($type) {
+      StorageType::FILE    => new FileStorage($storagePath),
+      StorageType::SQLITE  => new SqliteStorage($storagePath),
+    };
   }
 }
