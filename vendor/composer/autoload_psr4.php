@@ -6,6 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'PSON\\' => array($vendorDir . '/simplito/pson-php/src'),
     'Hoffman\\SimplePhpQueue\\' => array($baseDir . '/src'),
 );

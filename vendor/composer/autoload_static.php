@@ -7,10 +7,6 @@ namespace Composer\Autoload;
 class ComposerStaticInit1c27cb5099d5a977c99fd15e7c9b3a5f
 {
     public static $prefixLengthsPsr4 = array (
-        'P' => 
-        array (
-            'PSON\\' => 5,
-        ),
         'H' => 
         array (
             'Hoffman\\SimplePhpQueue\\' => 23,
@@ -18,10 +14,6 @@ class ComposerStaticInit1c27cb5099d5a977c99fd15e7c9b3a5f
     );
 
     public static $prefixDirsPsr4 = array (
-        'PSON\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/simplito/pson-php/src',
-        ),
         'Hoffman\\SimplePhpQueue\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',

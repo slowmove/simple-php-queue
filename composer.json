@@ -13,6 +13,5 @@
         }
     ],
     "require": {
-        "simplito/pson-php": "^1.0"
     }
 }
