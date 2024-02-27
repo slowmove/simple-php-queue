@@ -1,0 +1,18 @@
+{
+    "name": "erikhoffman/simple-php-queue",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Hoffman\\SimplePhpQueue\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Erik Hoffman",
+            "email": "erik.johansson87@gmail.com"
+        }
+    ],
+    "require": {
+        "simplito/pson-php": "^1.0"
+    }
+}

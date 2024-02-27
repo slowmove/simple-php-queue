@@ -1,0 +1,23 @@
+{
+    "name": "simplito/pson-php",
+    "description": "PHP implementation of pson",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simplito Team",
+            "email": "s.smyczynski@simplito.com",
+            "homepage": "https://simplito.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "PSON\\": "src/"
+        }
+    }
+}
