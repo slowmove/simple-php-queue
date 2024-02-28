@@ -9,7 +9,7 @@ use Hoffman\SimplePhpQueue\Storage\StorageType;
 class Queue
 {
   private StorageInterface $storage;
-  private $debug;
+  private bool $debug;
 
   public function __construct(StorageType $storage, string $queueFile, bool $debug = false)
   {
@@ -27,7 +27,7 @@ class Queue
     return $this->storage->dequeue();
   }
 
-  public function listen(callable $fn, $delayWhenEmpty = 5): void
+  public function listen(callable $fn, int $delayWhenEmpty = 5): void
   {
     $delaySeconds = $delayWhenEmpty;
     while (true) {

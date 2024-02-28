@@ -8,7 +8,7 @@ use Hoffman\SimplePhpQueue\Storage\Adapters\SqliteStorage;
 
 class StorageFactory
 {
-  public static function getStorage(StorageType $type, string $storagePath = "")
+  public static function getStorage(StorageType $type, string $storagePath = ""): StorageInterface
   {
     return match ($type) {
       StorageType::FILE    => new FileStorage($storagePath),

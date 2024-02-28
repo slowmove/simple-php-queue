@@ -10,7 +10,7 @@ class FileStorage implements StorageInterface
   private string $queueFile;
   private bool $debug = false;
 
-  public function __construct(string $storagePath, $debug = false)
+  public function __construct(string $storagePath, bool $debug = false)
   {
     $this->queueFile = FileUtils::isFilePath($storagePath) ? $storagePath : rtrim($storagePath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . 'queue.txt';
     FileUtils::createFile($this->queueFile);

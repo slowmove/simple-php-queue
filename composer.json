@@ -1,6 +1,10 @@
 {
     "name": "erikhoffman/simple-php-queue",
     "type": "library",
+    "scripts": {
+        "test": "pest",
+        "test:typecoverage": "pest --type-coverage src"
+    },
     "autoload": {
         "psr-4": {
             "Hoffman\\SimplePhpQueue\\": "src/"
@@ -15,5 +19,14 @@
     "require": {
         "php": ">=8.1",
         "predis/predis": "^2.2"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.34",
+        "pestphp/pest-plugin-type-coverage": "^2.8"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     }
 }
