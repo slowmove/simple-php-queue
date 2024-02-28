@@ -8,6 +8,10 @@ Currently implemented
 - `textfile`
 - `sqlite`
 
+## Requirements
+
+- `PHP 8.1+`
+
 ## Usage examples
 
 Examples available to run [here](./examples/)
