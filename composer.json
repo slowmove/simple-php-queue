@@ -2,6 +2,7 @@
     "name": "slowmove/simple-php-queue",
     "description": "A simple, primarily file based, queue with multiple adapters",
     "type": "library",
+    "license": "MIT",
     "scripts": {
         "test": "pest",
         "test:typecoverage": "pest --type-coverage src"
