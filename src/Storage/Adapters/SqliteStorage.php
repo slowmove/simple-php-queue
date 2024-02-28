@@ -1,9 +1,9 @@
 <?php
 
-namespace Hoffman\SimplePhpQueue\Storage\Adapters;
+namespace Slowmove\SimplePhpQueue\Storage\Adapters;
 
-use Hoffman\SimplePhpQueue\Helpers\FileUtils;
-use Hoffman\SimplePhpQueue\Storage\StorageInterface;
+use Slowmove\SimplePhpQueue\Helpers\FileUtils;
+use Slowmove\SimplePhpQueue\Storage\StorageInterface;
 
 class SqliteStorage implements StorageInterface
 {

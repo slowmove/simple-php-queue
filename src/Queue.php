@@ -1,10 +1,10 @@
 <?php
 
-namespace Hoffman\SimplePhpQueue;
+namespace Slowmove\SimplePhpQueue;
 
-use Hoffman\SimplePhpQueue\Storage\StorageFactory;
-use Hoffman\SimplePhpQueue\Storage\StorageInterface;
-use Hoffman\SimplePhpQueue\Storage\StorageType;
+use Slowmove\SimplePhpQueue\Storage\StorageFactory;
+use Slowmove\SimplePhpQueue\Storage\StorageInterface;
+use Slowmove\SimplePhpQueue\Storage\StorageType;
 
 class Queue
 {

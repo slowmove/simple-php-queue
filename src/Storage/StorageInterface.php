@@ -1,6 +1,6 @@
 <?php
 
-namespace Hoffman\SimplePhpQueue\Storage;
+namespace Slowmove\SimplePhpQueue\Storage;
 
 interface StorageInterface
 {

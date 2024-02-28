@@ -22,8 +22,8 @@ Examples available to run [here](./examples/)
 ```php
 <?php
 
-use Hoffman\SimplePhpQueue\Queue;
-use Hoffman\SimplePhpQueue\Storage\StorageType;
+use Slowmove\SimplePhpQueue\Queue;
+use Slowmove\SimplePhpQueue\Storage\StorageType;
 
 $queue = new Queue(StorageType::SQLITE, "./queue.db");
 for ($i = 0; $i < 150; $i++) {
@@ -36,8 +36,8 @@ for ($i = 0; $i < 150; $i++) {
 ```php
 <?php 
 
-use Hoffman\SimplePhpQueue\Queue;
-use Hoffman\SimplePhpQueue\Storage\StorageType;
+use Slowmove\SimplePhpQueue\Queue;
+use Slowmove\SimplePhpQueue\Storage\StorageType;
 
 $queue = new Queue(StorageType::SQLITE, "./queue.db", true);
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Hoffman\SimplePhpQueue\Helpers;
+namespace Slowmove\SimplePhpQueue\Helpers;
 
 class FileUtils
 {

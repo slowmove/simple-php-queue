@@ -1,8 +1,8 @@
 <?php
 
-namespace Hoffman\SimplePhpQueue\Storage\Adapters;
+namespace Slowmove\SimplePhpQueue\Storage\Adapters;
 
-use Hoffman\SimplePhpQueue\Storage\StorageInterface;
+use Slowmove\SimplePhpQueue\Storage\StorageInterface;
 use Predis\Client;
 use Predis\Response\Status;
 

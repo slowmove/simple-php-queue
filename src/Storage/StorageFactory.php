@@ -1,10 +1,10 @@
 <?php
 
-namespace Hoffman\SimplePhpQueue\Storage;
+namespace Slowmove\SimplePhpQueue\Storage;
 
-use Hoffman\SimplePhpQueue\Storage\Adapters\FileStorage;
-use Hoffman\SimplePhpQueue\Storage\Adapters\RedisStorage;
-use Hoffman\SimplePhpQueue\Storage\Adapters\SqliteStorage;
+use Slowmove\SimplePhpQueue\Storage\Adapters\FileStorage;
+use Slowmove\SimplePhpQueue\Storage\Adapters\RedisStorage;
+use Slowmove\SimplePhpQueue\Storage\Adapters\SqliteStorage;
 
 class StorageFactory
 {

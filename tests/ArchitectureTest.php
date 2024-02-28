@@ -1,9 +1,9 @@
 <?php
 
 arch("Adapters should implement Storage Interface")
-  ->expect("Hoffman\SimplePhpQueue\Storage\Adapters")
-  ->toImplement("Hoffman\SimplePhpQueue\Storage\StorageInterface");
+  ->expect("Slowmove\SimplePhpQueue\Storage\Adapters")
+  ->toImplement("Slowmove\SimplePhpQueue\Storage\StorageInterface");
 
 arch("Adapters should be named with Storage as suffix")
-  ->expect("Hoffman\SimplePhpQueue\Storage\Adapters")
+  ->expect("Slowmove\SimplePhpQueue\Storage\Adapters")
   ->toHaveSuffix("Storage");

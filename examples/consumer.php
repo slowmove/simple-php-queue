@@ -1,7 +1,7 @@
 <?php
 
-use Hoffman\SimplePhpQueue\Queue;
-use Hoffman\SimplePhpQueue\Storage\StorageType;
+use Slowmove\SimplePhpQueue\Queue;
+use Slowmove\SimplePhpQueue\Storage\StorageType;
 
 require __DIR__ . '/../vendor/autoload.php';
 
