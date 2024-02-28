@@ -38,7 +38,7 @@ for ($i = 0; $i < 150; $i++) {
 use Hoffman\SimplePhpQueue\Queue;
 use Hoffman\SimplePhpQueue\Storage\StorageType;
 
-$queue = new Queue(StorageType::SQLITE, "./", true);
+$queue = new Queue(StorageType::SQLITE, "./queue.db", true);
 
 $queue->listen(function ($item) {
   echo $item . PHP_EOL;
