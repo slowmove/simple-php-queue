@@ -7,6 +7,7 @@ Currently implemented
 
 - `textfile`
 - `sqlite`
+- `redis` (send in connection string instead of file path, default to localhost)
 
 ## Requirements
 
