@@ -8,6 +8,7 @@ Currently implemented
 - `textfile`
 - `sqlite`
 - `redis` (send in connection string instead of file path, default to localhost)
+- `beanstalkd` https://beanstalkd.github.io/
 
 ## Requirements
 
@@ -56,6 +57,7 @@ enum StorageType: string
   case FILE = 'file';
   case SQLITE = 'sqlite';
   case REDIS = 'redis';
+  case BEANSTALKD = 'beanstalkd';
 }
 ```
 
