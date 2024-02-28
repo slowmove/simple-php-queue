@@ -4,7 +4,6 @@ namespace Slowmove\SimplePhpQueue\Storage\Adapters;
 
 use Slowmove\SimplePhpQueue\Storage\StorageInterface;
 use Predis\Client;
-use Predis\Response\Status;
 
 
 class RedisStorage implements StorageInterface
