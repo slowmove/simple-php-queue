@@ -41,4 +41,14 @@ class SqliteStorage implements StorageInterface
   {
     return $this->connection->querySingle("SELECT COUNT(*) FROM queue");
   }
+
+  public function content(): array
+  {
+    $result = $this->connection->query("SELECT data FROM queue ORDER BY id asc");
+    $data = [];
+    while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+      $data[] = $row["data"];
+    }
+    return $data;
+  }
 }

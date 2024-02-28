@@ -11,4 +11,6 @@ interface StorageInterface
   public function dequeue(): ?string;
 
   public function length(): int;
+
+  public function content(): array;
 }

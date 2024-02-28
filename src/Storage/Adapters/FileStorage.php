@@ -88,4 +88,9 @@ class FileStorage implements StorageInterface
     }
     return count($lines);
   }
+
+  public function content(): array
+  {
+    return file($this->queueFile, FILE_SKIP_EMPTY_LINES);
+  }
 }

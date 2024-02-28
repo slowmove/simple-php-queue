@@ -46,4 +46,9 @@ class Queue
   {
     return $this->storage->length();
   }
+
+  public function content(): array
+  {
+    return $this->storage->content();
+  }
 }

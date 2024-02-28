@@ -52,3 +52,4 @@ $queue->listen(function ($item) {
 - `dequeue(): ?string`
 - `listen(callable $fn, $delayWhenEmpty = 5): void`
 - `length(): int`
+- `content(): array`
