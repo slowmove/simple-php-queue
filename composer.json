@@ -1,5 +1,6 @@
 {
-    "name": "erikhoffman/simple-php-queue",
+    "name": "slowmove/simple-php-queue",
+    "description": "A simple, primarily file based, queue with multiple adapters",
     "type": "library",
     "scripts": {
         "test": "pest",
@@ -10,12 +11,6 @@
             "Hoffman\\SimplePhpQueue\\": "src/"
         }
     },
-    "authors": [
-        {
-            "name": "Erik Hoffman",
-            "email": "erik.johansson87@gmail.com"
-        }
-    ],
     "require": {
         "php": ">=8.1",
         "predis/predis": "^2.2"
