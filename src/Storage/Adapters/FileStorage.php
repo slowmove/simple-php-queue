@@ -2,6 +2,7 @@
 
 namespace Hoffman\SimplePhpQueue\Storage\Adapters;
 
+use Hoffman\SimplePhpQueue\Helpers\FileUtils;
 use Hoffman\SimplePhpQueue\Storage\StorageInterface;
 
 class FileStorage implements StorageInterface
@@ -11,17 +12,8 @@ class FileStorage implements StorageInterface
 
   public function __construct(string $storagePath, $debug = false)
   {
-    if (!is_dir($storagePath)) {
-      mkdir($storagePath, 0777, true);
-    }
-    if (!is_writable($storagePath)) {
-      throw new \Exception("Storage path $storagePath is not writable");
-    }
-    if (!is_readable($storagePath)) {
-      throw new \Exception("Storage path $storagePath is not readable");
-    }
-
-    $this->queueFile = (mb_strpos($storagePath, ".txt") > -1) ?: $storagePath . '/queue.txt';
+    $this->queueFile = FileUtils::isFilePath($storagePath) ? $storagePath : rtrim($storagePath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . 'queue.txt';
+    FileUtils::createFile($this->queueFile);
     $this->debug = $debug;
   }
 

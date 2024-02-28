@@ -2,6 +2,7 @@
 
 namespace Hoffman\SimplePhpQueue\Storage\Adapters;
 
+use Hoffman\SimplePhpQueue\Helpers\FileUtils;
 use Hoffman\SimplePhpQueue\Storage\StorageInterface;
 
 class SqliteStorage implements StorageInterface
@@ -12,7 +13,8 @@ class SqliteStorage implements StorageInterface
 
   public function __construct(string $storagePath, bool $debug = false)
   {
-    $this->queueFile = (mb_strpos($storagePath, ".db") > -1) ?: $storagePath . '/queue.db';
+    $this->queueFile = FileUtils::isFilePath($storagePath) ? $storagePath : rtrim($storagePath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . 'queue.db';
+    FileUtils::createFile($this->queueFile);
     $this->debug = $debug;
 
     $this->connection = new \SQLite3($this->queueFile);
