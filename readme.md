@@ -63,6 +63,6 @@ enum StorageType: string
 
 - `enqueue(string $data): bool`
 - `dequeue(): ?string`
-- `listen(callable $fn, $delayWhenEmpty = 5): void`
+- `listen(callable $fn, int $delayWhenEmpty = 5): void`
 - `length(): int`
 - `content(): array`
