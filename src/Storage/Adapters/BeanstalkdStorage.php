@@ -11,6 +11,7 @@ use Slowmove\SimplePhpQueue\Storage\StorageInterface;
 class BeanstalkdStorage implements StorageInterface
 {
   const DEFAULT_STORAGE_PATH = '127.0.0.1';
+  const DEFAULT_STORAGE_PORT = 11300;
   const DEFAULT_STORAGE_NAME = 'queue';
 
   private Pheanstalk $beanstalkdClient;
@@ -18,8 +19,18 @@ class BeanstalkdStorage implements StorageInterface
 
   public function __construct(string $storagePath)
   {
-    $connectionString = $storagePath ?: self::DEFAULT_STORAGE_PATH;
-    $this->beanstalkdClient = Pheanstalk::create($connectionString);
+    $host = self::DEFAULT_STORAGE_PATH;
+    $port = self::DEFAULT_STORAGE_PORT;
+
+    if ($storagePath && strpos($storagePath, ":") > -1) {
+      $connectionString = explode(':', $storagePath);
+      $host = $connectionString[0];
+      $port = $connectionString[1];
+    } else if ($storagePath) {
+      $host = $storagePath;
+    }
+
+    $this->beanstalkdClient = Pheanstalk::create($host, $port);
     $this->tube = new TubeName(self::DEFAULT_STORAGE_NAME);
   }
 
