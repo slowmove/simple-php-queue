@@ -46,6 +46,18 @@ $queue->listen(function ($item) {
 });
 ```
 
+### Types
+
+Enum available [here](./src/Storage/StorageType.php);
+
+```php
+enum StorageType: string
+{
+  case FILE = 'file';
+  case SQLITE = 'sqlite';
+  case REDIS = 'redis';
+}
+```
 
 ## Methods
 
