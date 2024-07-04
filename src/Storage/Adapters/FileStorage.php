@@ -12,6 +12,9 @@ class FileStorage implements StorageInterface
 
   public function __construct(string $storagePath, bool $debug = false)
   {
+    if (empty($storagePath)) {
+      $storagePath = ".";
+    }
     $this->queueFile = FileUtils::isFilePath($storagePath) ? $storagePath : rtrim($storagePath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . 'queue.txt';
     FileUtils::createFile($this->queueFile);
     $this->debug = $debug;
@@ -70,6 +73,20 @@ class FileStorage implements StorageInterface
     fclose($fileHandle);
 
     return $data;
+  }
+
+  public function exist(string $value): bool
+  {
+    $lines = file($this->queueFile, FILE_SKIP_EMPTY_LINES);
+    if (!$lines) {
+      return false;
+    }
+    foreach ($lines as $line) {
+      if (trim($line) === trim($value)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   public function length(): int

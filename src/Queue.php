@@ -27,6 +27,11 @@ class Queue
     return $this->storage->dequeue();
   }
 
+  public function exist($value): ?string
+  {
+    return $this->storage->exist($value);
+  }
+
   public function listen(callable $fn, int $delayWhenEmpty = 5): void
   {
     $delaySeconds = $delayWhenEmpty;

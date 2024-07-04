@@ -53,6 +53,11 @@ class BeanstalkdStorage implements StorageInterface
     return null;
   }
 
+  public function exist(string $value): bool
+  {
+    throw new \Exception('Not implemented yet');
+  }
+
   public function length(): int
   {
     try {

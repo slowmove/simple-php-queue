@@ -30,6 +30,12 @@ class RedisStorage implements StorageInterface
     return $this->redisClient->rpop(self::DEFAULT_STORAGE_NAME);
   }
 
+  public function exist(string $value): bool
+  {
+    $exist = $this->redisClient->executeRaw(["LPOS", self::DEFAULT_STORAGE_NAME, $value]);
+    return boolval($exist);
+  }
+
   public function length(): int
   {
     return $this->redisClient->llen(self::DEFAULT_STORAGE_NAME);

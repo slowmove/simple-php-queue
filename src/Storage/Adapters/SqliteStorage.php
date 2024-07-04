@@ -13,6 +13,9 @@ class SqliteStorage implements StorageInterface
 
   public function __construct(string $storagePath, bool $debug = false)
   {
+    if (empty($storagePath)) {
+      $storagePath = ".";
+    }
     $this->queueFile = FileUtils::isFilePath($storagePath) ? $storagePath : rtrim($storagePath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . 'queue.db';
     FileUtils::createFile($this->queueFile);
     $this->debug = $debug;
@@ -37,6 +40,12 @@ class SqliteStorage implements StorageInterface
       $this->connection->query("DELETE FROM queue WHERE id = $id");
     }
     return $data ?? null;
+  }
+
+  public function exist(string $value): bool
+  {
+    $result = $this->connection->querySingle("SELECT COUNT(*) FROM queue WHERE data = '$value'");
+    return !!$result;
   }
 
   public function length(): int
