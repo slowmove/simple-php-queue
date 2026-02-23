@@ -9,5 +9,6 @@ $queue = new Queue(
   storage: StorageType::FILE,
   queueFile: ""
 );
-$exist = $queue->exist("test 132");
-var_dump($exist);
+
+$next = $queue->peek();
+echo "Next item in queue: " . ($next ?? '(empty)') . PHP_EOL;

@@ -53,6 +53,17 @@ class BeanstalkdStorage implements StorageInterface
     return null;
   }
 
+  public function peek(): ?string
+  {
+    try {
+      $this->beanstalkdClient->useTube($this->tube);
+      $job = $this->beanstalkdClient->peekReady();
+      return $job->getData();
+    } catch (\Throwable $th) {
+      return null;
+    }
+  }
+
   public function exist(string $value): bool
   {
     throw new \Exception('Not implemented yet');

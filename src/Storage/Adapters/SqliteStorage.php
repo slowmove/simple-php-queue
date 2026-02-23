@@ -42,6 +42,12 @@ class SqliteStorage implements StorageInterface
     return $data ?? null;
   }
 
+  public function peek(): ?string
+  {
+    $data = $this->connection->querySingle("SELECT data FROM queue ORDER BY id ASC LIMIT 1");
+    return $data ?: null;
+  }
+
   public function exist(string $value): bool
   {
     $result = $this->connection->querySingle("SELECT COUNT(*) FROM queue WHERE data = '$value'");

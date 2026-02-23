@@ -27,6 +27,11 @@ class Queue
     return $this->storage->dequeue();
   }
 
+  public function peek(): ?string
+  {
+    return $this->storage->peek();
+  }
+
   public function exist($value): ?string
   {
     return $this->storage->exist($value);

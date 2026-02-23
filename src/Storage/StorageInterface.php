@@ -10,6 +10,8 @@ interface StorageInterface
 
   public function dequeue(): ?string;
 
+  public function peek(): ?string;
+
   public function exist(string $value): bool;
 
   public function length(): int;

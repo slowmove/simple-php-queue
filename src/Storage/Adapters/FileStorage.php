@@ -75,6 +75,28 @@ class FileStorage implements StorageInterface
     return $data;
   }
 
+  public function peek(): ?string
+  {
+    $fileHandle = fopen($this->queueFile, 'r');
+    if (!$fileHandle) {
+      return null;
+    }
+
+    flock($fileHandle, LOCK_SH);
+
+    $line = fgets($fileHandle);
+
+    flock($fileHandle, LOCK_UN);
+    fclose($fileHandle);
+
+    if ($line === false) {
+      return null;
+    }
+
+    $data = rtrim($line, PHP_EOL);
+    return $data !== '' ? $data : null;
+  }
+
   public function exist(string $value): bool
   {
     $lines = file($this->queueFile, FILE_SKIP_EMPTY_LINES);
