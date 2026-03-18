@@ -8,16 +8,18 @@ use Slowmove\SimplePhpQueue\Storage\StorageInterface;
 class FileStorage implements StorageInterface
 {
   private string $queueFile;
-  private bool $debug = false;
 
-  public function __construct(string $storagePath, bool $debug = false)
-  {
+  public function __construct(
+    string $storagePath,
+    string $storageName = 'queue'
+  ) {
     if (empty($storagePath)) {
       $storagePath = ".";
     }
-    $this->queueFile = FileUtils::isFilePath($storagePath) ? $storagePath : rtrim($storagePath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . 'queue.txt';
+    $this->queueFile = FileUtils::isFilePath($storagePath)
+      ? $storagePath
+      : rtrim($storagePath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $storageName . '.txt';
     FileUtils::createFile($this->queueFile);
-    $this->debug = $debug;
   }
 
   public function enqueue(string $data): bool
@@ -30,11 +32,6 @@ class FileStorage implements StorageInterface
     flock($fileHandle, LOCK_EX);
 
     fwrite($fileHandle, $data . PHP_EOL);
-
-    if ($this->debug) {
-      echo "Enqueued item: $data" . PHP_EOL;
-      echo "===" . PHP_EOL;
-    }
 
     flock($fileHandle, LOCK_UN);
     fclose($fileHandle);
@@ -63,10 +60,6 @@ class FileStorage implements StorageInterface
       ftruncate($fileHandle, 0);
       rewind($fileHandle);
       fwrite($fileHandle, implode(PHP_EOL, $lines));
-    }
-    if ($this->debug && !empty($data)) {
-      echo "Dequeued item: $data" . PHP_EOL;
-      echo "===" . PHP_EOL;
     }
 
     flock($fileHandle, LOCK_UN);

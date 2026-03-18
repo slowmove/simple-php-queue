@@ -7,8 +7,8 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $queue = new Queue(
   storage: StorageType::FILE,
-  queueFile: "./",
-  debug: true
+  storagePath: "./",
+  storageName: "my_queue"
 );
 
 $queue->listen(function ($item) {
