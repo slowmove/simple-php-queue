@@ -12,26 +12,27 @@ class BeanstalkdStorage implements StorageInterface
 {
   const DEFAULT_STORAGE_PATH = '127.0.0.1';
   const DEFAULT_STORAGE_PORT = 11300;
-  const DEFAULT_STORAGE_NAME = 'queue';
 
   private Pheanstalk $beanstalkdClient;
   private TubeName $tube;
 
-  public function __construct(string $storagePath)
-  {
+  public function __construct(
+    string $connectionString = self::DEFAULT_STORAGE_PATH . ':' . self::DEFAULT_STORAGE_PORT,
+    string $tubeName = 'queue'
+  ) {
     $host = self::DEFAULT_STORAGE_PATH;
     $port = self::DEFAULT_STORAGE_PORT;
 
-    if ($storagePath && strpos($storagePath, ":") > -1) {
-      $connectionString = explode(':', $storagePath);
-      $host = $connectionString[0];
-      $port = $connectionString[1];
-    } else if ($storagePath) {
-      $host = $storagePath;
+    if ($connectionString && strpos($connectionString, ":") > -1) {
+      $connectionStringParts = explode(':', $connectionString);
+      $host = $connectionStringParts[0];
+      $port = $connectionStringParts[1];
+    } else if ($connectionString) {
+      $host = $connectionString;
     }
 
     $this->beanstalkdClient = Pheanstalk::create($host, $port);
-    $this->tube = new TubeName(self::DEFAULT_STORAGE_NAME);
+    $this->tube = new TubeName($tubeName);
   }
 
   public function enqueue(string $data): bool

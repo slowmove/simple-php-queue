@@ -9,13 +9,13 @@ use Slowmove\SimplePhpQueue\Storage\Adapters\SqliteStorage;
 
 class StorageFactory
 {
-  public static function getStorage(StorageType $type, string $storagePath = ""): StorageInterface
+  public static function getStorage(StorageType $type, string $storagePath = "", string $storageName = 'queue'): StorageInterface
   {
     return match ($type) {
-      StorageType::FILE       => new FileStorage($storagePath),
-      StorageType::SQLITE     => new SqliteStorage($storagePath),
-      StorageType::REDIS      => new RedisStorage($storagePath),
-      StorageType::BEANSTALKD => new BeanstalkdStorage($storagePath),
+      StorageType::FILE       => new FileStorage($storagePath, $storageName),
+      StorageType::SQLITE     => new SqliteStorage($storagePath, $storageName),
+      StorageType::REDIS      => new RedisStorage($storagePath, $storageName),
+      StorageType::BEANSTALKD => new BeanstalkdStorage($storagePath, $storageName),
     };
   }
 }

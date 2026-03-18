@@ -9,16 +9,18 @@ class SqliteStorage implements StorageInterface
 {
   private string $queueFile;
   private \SQLite3 $connection;
-  private bool $debug = false;
 
-  public function __construct(string $storagePath, bool $debug = false)
-  {
+  public function __construct(
+    string $storagePath,
+    string $storageName = 'queue',
+  ) {
     if (empty($storagePath)) {
       $storagePath = ".";
     }
-    $this->queueFile = FileUtils::isFilePath($storagePath) ? $storagePath : rtrim($storagePath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . 'queue.db';
+    $this->queueFile = FileUtils::isFilePath($storagePath)
+      ? $storagePath
+      : rtrim($storagePath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . $storageName . '.db';
     FileUtils::createFile($this->queueFile);
-    $this->debug = $debug;
 
     $this->connection = new \SQLite3($this->queueFile);
     $this->connection->query("CREATE TABLE IF NOT EXISTS queue (id INTEGER PRIMARY KEY AUTOINCREMENT, data TEXT)");
